@@ -1,8 +1,11 @@
-\documentclass{article}
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=2cm, text={17cm,24cm}, top=3cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{times}
+\usepackage{lmodern}
 \usepackage[czech]{babel}
 \usepackage[unicode]{hyperref}
+\usepackage{graphicx}
 
 \title{Documentation for IFJ \& IAL project}
 \author{Michal Šmahel}
@@ -10,7 +13,27 @@
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[height = 160pt]{images/FIT_logo.pdf}\\
+		
+		{\Huge \textsc{Fakulta informačních technologií}\\[0.4em]}
+		{\Huge \textsc{Vysoké učení technické v~Brně}}\\
+		\vspace{\stretch{0.382}}
+		{\LARGE Formální jazyky a překladače\\[0.3em]}
+		{\LARGE Dokumentace k projektu IFJ a IAL}\\
+		\vspace{\stretch{0.618}}
+		
+		\begin{tabular}{c c c c c}
+            \textbf{Jméno} & \textbf{Příjmení} & \textbf{xlogin} & \textbf{podíl práce} & \textbf{role}\\
+            \hline
+            Michal & Šmahel & xlogin99 & 35\% & vedoucí týmu \\[5pt]
+            Martin & Havlík & xlogin98 & 35\% &\\[5pt]
+            Pavel & Osinek & xosine00 & 30\% &  
+        \end{tabular}
+            
+    \end{center}
+\end{titlepage}
 
 \newpage
 \tableofcontents
