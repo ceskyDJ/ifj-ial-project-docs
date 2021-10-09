@@ -1,11 +1,27 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=2cm, text={17cm,24cm}, top=3cm]{geometry}
+\usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{times}
-\usepackage{lmodern}
-\usepackage[czech]{babel}
-\usepackage[unicode]{hyperref}
-\usepackage{graphicx}
+\usepackage[unicode]{hyperref} %pro křížové odkazy
+\usepackage{graphicx} %pro práci s obrázky
+\usepackage{lmodern} %fonty
+\usepackage{amsmath} %sazba matematiky
+\usepackage{xcolor}
+\usepackage{listings} %algoritmy, sazba kódu
+\lstset{
+  language=C,
+  numbers=left,
+  numbersep=5pt,
+  breakatwhitespace=false,         
+  breaklines=true,  
+  keepspaces=true,   
+  commentstyle=\color{green},
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{magenta},
+  stringstyle=\color{purple},
+  basicstyle=\ttfamily\footnotesize,
+}
 
 \title{Documentation for IFJ \& IAL project}
 \author{Michal Šmahel}
@@ -29,7 +45,7 @@
             \hline
             Michal & Šmahel & xlogin99 & 35\% & vedoucí týmu \\[5pt]
             Martin & Havlík & xlogin98 & 35\% &\\[5pt]
-            Pavel & Osinek & xosine00 & 30\% & 
+            Pavel  & Osinek & xosine00 & 30\% & 
         \end{tabular}\\[30pt]
         \textbf{Implementovaná rozšíření:} X, Y, Z
     \end{center}
@@ -47,6 +63,16 @@
 
 \section{Úvod}
     Zkouška citace~\cite{MedunaAlexander2008Eocd}.
+    
+    Ukázka kódu
+    \begin{lstlisting}
+        #include <stdio.h>
+            int main() {
+                // printf() displays the string inside quotation
+                printf("Hello, World!");
+                return 0;
+            }\end{lstlisting}
+        
 \section{Implementace překladače}
     \subsection{Lexikální analýza}
         \subsubsection{Diagram konečného automatu}
