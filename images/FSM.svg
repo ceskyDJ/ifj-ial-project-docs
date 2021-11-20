@@ -1,0 +1,545 @@
+<svg id="Vrstva_1" data-name="Vrstva 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1378.46403 999.85598">
+  <defs>
+    <style>
+      .cls-1, .cls-6 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke: #000;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-8 {
+        isolation: isolate;
+        font-family: TimesNewRomanPSMT, Times New Roman;
+      }
+
+      .cls-2 {
+        font-size: 28px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-8 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0.01px;
+      }
+
+      .cls-3, .cls-4, .cls-8 {
+        font-size: 17px;
+      }
+
+      .cls-4 {
+        letter-spacing: -0.00899em;
+      }
+
+      .cls-18, .cls-19, .cls-24, .cls-5 {
+        font-size: 22.51174px;
+      }
+
+      .cls-5 {
+        stroke-width: 0.25px;
+      }
+
+      .cls-12, .cls-14, .cls-16, .cls-18, .cls-19, .cls-21, .cls-24, .cls-5, .cls-9 {
+        font-family: MyriadPro-Regular, Myriad Pro;
+      }
+
+      .cls-8 {
+        stroke-width: 0.1px;
+      }
+
+      .cls-12, .cls-16, .cls-9 {
+        font-size: 21.87404px;
+      }
+
+      .cls-9 {
+        letter-spacing: -0.04098em;
+      }
+
+      .cls-10 {
+        letter-spacing: -0.03299em;
+      }
+
+      .cls-11 {
+        letter-spacing: -0.02996em;
+      }
+
+      .cls-13 {
+        letter-spacing: 0.00402em;
+      }
+
+      .cls-14 {
+        font-size: 24px;
+        letter-spacing: -0.01102em;
+      }
+
+      .cls-15 {
+        letter-spacing: -0.01998em;
+      }
+
+      .cls-16 {
+        letter-spacing: -0.04em;
+      }
+
+      .cls-17 {
+        letter-spacing: -0.046em;
+      }
+
+      .cls-19 {
+        letter-spacing: -0.00399em;
+      }
+
+      .cls-20 {
+        letter-spacing: 0.00004em;
+      }
+
+      .cls-21 {
+        font-size: 22.51px;
+      }
+
+      .cls-22 {
+        letter-spacing: -0.03397em;
+      }
+
+      .cls-23 {
+        letter-spacing: -0.10199em;
+      }
+
+      .cls-24 {
+        letter-spacing: -0.126em;
+      }
+
+      .cls-25 {
+        letter-spacing: -0.01301em;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="564.15249" cy="506.16962" r="95.19198"/>
+  <text class="cls-2" transform="translate(501.56119 513.5459)">Initial state</text>
+  <text class="cls-3" transform="translate(1004.47386 488.66481)">line<tspan x="-18.88379" y="20.3999">comment</tspan></text>
+  <circle class="cls-1" cx="1017.23942" cy="493.98926" r="50.92593"/>
+  <text class="cls-3" transform="translate(1132.28048 418.45315)">multiline<tspan x="-9.4375" y="20.3999">comment_1</tspan></text>
+  <circle class="cls-1" cx="1162.99026" cy="423.77785" r="50.92593"/>
+  <text class="cls-3" transform="translate(1132.90263 588.66488)">multiline<tspan x="-9.4375" y="20.3999">comment_2</tspan></text>
+  <circle class="cls-1" cx="1163.61314" cy="593.98916" r="50.92593"/>
+  <text class="cls-3" transform="translate(838.5305 588.66447)">multiline<tspan x="-9.4375" y="20.3999">comment_3</tspan></text>
+  <circle class="cls-1" cx="869.23942" cy="593.98916" r="50.92593"/>
+  <circle class="cls-1" cx="517.63848" cy="83.53304" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, 396.78727, 583.8231)"/>
+  <circle class="cls-1" cx="517.63848" cy="83.53304" r="47.6132" transform="matrix(0.07089, -0.99748, 0.99748, 0.07089, 377.48223, 579.66576)"/>
+  <text class="cls-3" transform="translate(482.81705 63.92627)">type<tspan x="-14.62598" y="20.3999">specifier</tspan></text>
+  <circle class="cls-1" cx="889.14137" cy="438.05977" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, 401.59694, 1297.84904)"/>
+  <circle class="cls-1" cx="889.14137" cy="438.05977" r="47.6132" transform="translate(369.0148 1279.62871) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(848.22086 427.90918)">minus</text>
+  <text class="cls-3" transform="translate(841.12284 727.99567)">string in</text>
+  <circle class="cls-1" cx="869.23942" cy="723.86572" r="50.92593"/>
+  <text class="cls-3" transform="translate(1035.68362 712.92502)">escape</text>
+  <circle class="cls-1" cx="1058.3515" cy="708.79405" r="50.92593"/>
+  <circle class="cls-1" cx="889.37793" cy="895.92988" r="52.13093" transform="translate(-55.7909 1740.7186) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="889.37793" cy="895.92988" r="47.6132" transform="translate(-87.48362 1705.27682) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(836.89133 885.77893)">string out</text>
+  <text class="cls-3" transform="translate(1189.43342 801.33438)">escape_d</text>
+  <circle class="cls-1" cx="1220.60103" cy="797.20341" r="50.92593"/>
+  <text class="cls-3" transform="translate(1022.93497 890.57617)">escape_dd</text>
+  <circle class="cls-1" cx="1058.3515" cy="886.4452" r="50.92593"/>
+  <circle class="cls-1" cx="384.33599" cy="83.53304" r="52.13093" transform="translate(267.9208 450.59443) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="384.33599" cy="83.53304" r="47.6132" transform="translate(253.62938 446.69862) rotate(-85.93495)"/>
+  <text class="cls-4" transform="translate(343.87961 63.50869)">multi-<tspan x="-8.73535" y="20.3999">plication</tspan></text>
+  <circle class="cls-1" cx="650.94097" cy="83.53304" r="52.13093" transform="translate(525.65372 717.05176) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="650.94097" cy="83.53304" r="47.6132" transform="matrix(0.07089, -0.99748, 0.99748, 0.07089, 501.33501, 712.63289)"/>
+  <text class="cls-3" transform="translate(606.49381 73.38086)">left par</text>
+  <circle class="cls-1" cx="784.24347" cy="83.53304" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, 654.5202, 850.28042)"/>
+  <circle class="cls-1" cx="784.24347" cy="83.53304" r="47.6132" transform="translate(625.18785 845.60003) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(735.07145 73.38086)">right par</text>
+  <text class="cls-3" transform="translate(220.94889 186.48242)">concat</text>
+  <path class="cls-1" d="M263.28487,145.7078a50.92593,50.92593,0,1,1-50.92595,50.92593A52.69354,52.69354,0,0,1,221.802,167.0868,51.81256,51.81256,0,0,1,263.28487,145.7078Z" transform="translate(-20.13851 -14.28192)"/>
+  <circle class="cls-1" cx="72.7695" cy="196.63373" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -146.31545, 248.53745)"/>
+  <circle class="cls-1" cx="72.76951" cy="196.63376" r="47.6132" transform="translate(-148.66663 240.9991) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(21.95084 186.48242)">concat_1</text>
+  <g>
+    <line class="cls-1" x1="191.55315" y1="180.70953" x2="111.27045" y2="180.70953"/>
+    <polygon points="112.729 175.723 104.095 180.71 112.729 185.695 112.729 175.723"/>
+  </g>
+  <text class="cls-5" transform="translate(145.49235 170.95215)">.</text>
+  <text class="cls-3" transform="translate(232.28336 306.91602)">not<tspan x="-7.54492" y="20.3999">equal</tspan></text>
+  <circle class="cls-1" cx="243.14635" cy="312.24004" r="50.92593"/>
+  <circle class="cls-1" cx="72.7695" cy="326.52196" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -276.13174, 374.10327)"/>
+  <text class="cls-3" transform="translate(41.76871 306.91602)">not<tspan x="-16.04492" y="20.3999">equal_2</tspan></text>
+  <g>
+    <line class="cls-1" x1="191.55315" y1="311.79535" x2="111.27045" y2="311.79535"/>
+    <polygon points="112.729 306.809 104.095 311.795 112.729 316.781 112.729 306.809"/>
+  </g>
+  <text class="cls-5" transform="translate(143.01285 302.03711)">=</text>
+  <circle class="cls-1" cx="263.28486" cy="454.60473" r="52.13093" transform="translate(-219.96817 688.33354) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="263.28486" cy="454.60473" r="47.6132" transform="translate(-228.9787 670.71882) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(219.50748 434.99707)">greater<tspan x="8.95654" y="20.3999">than</tspan></text>
+  <circle class="cls-1" cx="72.7695" cy="454.60473" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -404.14357, 497.92371)"/>
+  <circle class="cls-1" cx="72.7695" cy="454.60473" r="47.6132" transform="translate(-405.98861 480.68278) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(29.03971 434.99902)">greater<tspan x="-4.02197" y="20.3999">or equal</tspan></text>
+  <g>
+    <line class="cls-1" x1="191.55291" y1="443.28094" x2="111.27021" y2="443.28094"/>
+    <polygon points="112.729 438.295 104.094 443.281 112.729 448.267 112.729 438.295"/>
+  </g>
+  <text class="cls-5" transform="translate(141.11344 433.52344)">=</text>
+  <circle class="cls-1" cx="263.28486" cy="584.49294" r="52.13093" transform="translate(-349.78444 813.89934) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="263.28486" cy="584.49294" r="47.6132" transform="translate(-358.54014 791.39936) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(230.3483 564.88672)">less<tspan x="-1.88428" y="20.3999">than</tspan></text>
+  <circle class="cls-1" cx="72.7695" cy="584.49294" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -533.95984, 623.48951)"/>
+  <circle class="cls-1" cx="72.7695" cy="584.49294" r="47.6132" transform="translate(-535.55004 601.36333) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(39.87858 564.88672)">less<tspan x="-14.86279" y="20.3999">or equal</tspan></text>
+  <g>
+    <line class="cls-1" x1="191.55315" y1="575.08942" x2="111.27045" y2="575.08942"/>
+    <polygon points="112.729 570.103 104.095 575.089 112.729 580.075 112.729 570.103"/>
+  </g>
+  <text class="cls-5" transform="translate(141.11344 565.33105)">=</text>
+  <circle class="cls-1" cx="263.28486" cy="714.38114" r="52.13093" transform="translate(-479.6007 939.46514) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="263.28486" cy="714.38114" r="47.6132" transform="translate(-488.10157 912.07994) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(204.88297 704.22852)">assignment</text>
+  <circle class="cls-1" cx="72.7695" cy="714.38114" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -663.7761, 749.05531)"/>
+  <circle class="cls-1" cx="72.7695" cy="714.38114" r="47.6132" transform="translate(-665.11148 722.0439) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(34.20719 704.22852)">equal</text>
+  <g>
+    <line class="cls-1" x1="191.55266" y1="702.05023" x2="111.26998" y2="702.05023"/>
+    <polygon points="112.729 697.064 104.094 702.05 112.729 707.036 112.729 697.064"/>
+  </g>
+  <text class="cls-5" transform="translate(141.11344 692.29102)">=</text>
+  <circle class="cls-1" cx="263.28486" cy="844.26935" r="52.13093" transform="translate(-609.41697 1065.03093) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="263.28486" cy="844.26935" r="47.6132" transform="matrix(0.07089, -0.99748, 0.99748, 0.07089, -617.663, 1032.7605)"/>
+  <text class="cls-3" transform="translate(217.75358 834.11816)">division</text>
+  <circle class="cls-1" cx="72.7695" cy="844.26935" r="52.13093" transform="translate(-793.59237 874.6211) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="72.7695" cy="844.26935" r="47.6132" transform="translate(-794.67291 842.72448) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(29.03141 824.66406)">integer<tspan x="-3.79346" y="20.3999">division</tspan></text>
+  <g>
+    <line class="cls-1" x1="191.55291" y1="831.93854" x2="111.27021" y2="831.93854"/>
+    <polygon points="112.729 826.952 104.094 831.939 112.729 836.924 112.729 826.952"/>
+  </g>
+  <text class="cls-5" transform="translate(143.9611 822.18066)">/</text>
+  <g>
+    <line class="cls-6" x1="298.53348" y1="187.97223" x2="497.31296" y2="438.4024"/>
+    <polygon points="295.535 192.215 294.072 182.352 303.346 186.015 295.535 192.215"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="299.982" y1="824.56915" x2="509.04514" y2="583.79779"/>
+    <polygon points="304.704 826.737 295.277 829.987 297.174 820.199 304.704 826.737"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="300.9784" y1="695.74152" x2="483.2822" y2="556.39581"/>
+    <polygon points="305.166 698.817 295.277 700.099 299.11 690.894 305.166 698.817"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M319.92032,330.86926q40.30842,29.97436,80.61694,59.94873,52.06847,38.71912,104.13712,77.43836" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="297.977 321.459 294.024 312.305 303.928 313.457 297.977 321.459"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="302.20255" y1="442.20233" x2="470.71229" y2="487.93597"/>
+    <polygon points="302.305 447.397 295.277 440.323 304.917 437.773 302.305 447.397"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="302.19626" y1="568.30841" x2="469.96747" y2="522.1745"/>
+    <polygon points="304.925 572.729 295.277 570.211 302.281 563.114 304.925 572.729"/>
+  </g>
+  <g>
+    <g>
+      <line class="cls-1" x1="564.1525" y1="607.39679" x2="564.1525" y2="845.51447"/>
+      <path d="M584.291,615.64355a30.22339,30.22339,0,0,1-4.75586,8.54737l4.75586-1.72022,4.75488,1.72022A30.19636,30.19636,0,0,1,584.291,615.64355Z" transform="translate(-20.13851 -14.28192)"/>
+    </g>
+    <circle class="cls-7" cx="564.15249" cy="845.51447" r="8.12881"/>
+  </g>
+  <g>
+    <line x1="604.76454" y1="592.28168" x2="753.50457" y2="892.98653"/>
+    <g>
+      <line class="cls-1" x1="604.76456" y1="592.28168" x2="750.3231" y2="886.55463"/>
+      <polygon points="745.207 887.458 753.505 892.987 754.145 883.036 745.207 887.458"/>
+    </g>
+  </g>
+  <circle class="cls-1" cx="757.074" cy="335.62563" r="52.13093" transform="translate(376.30191 1066.82948) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="757.074" cy="335.62563" r="47.6132" transform="translate(348.48603 1052.72093) rotate(-85.93495)"/>
+  <text class="cls-8" transform="translate(719.46696 325.47461)">END</text>
+  <g>
+    <line class="cls-1" x1="607.54526" y1="419.54889" x2="746.52421" y2="125.85797"/>
+    <polygon points="750.407 129.31 749.594 119.372 741.393 125.044 750.407 129.31"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="518.1467" y1="424.58612" x2="381.69318" y2="125.8985"/>
+    <polygon points="386.835 125.154 378.711 119.372 377.764 129.297 386.835 125.154"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="545.1132" y1="410.9776" x2="502.47574" y2="126.46808"/>
+    <polygon points="507.623 127.172 501.412 119.372 497.761 128.65 507.623 127.172"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="578.67148" y1="410.9776" x2="633.36045" y2="126.41852"/>
+    <polygon points="637.982 128.792 634.715 119.372 628.189 126.91 637.982 128.792"/>
+  </g>
+  <text class="cls-9" transform="translate(825.28014 988.50427)">[<tspan class="cls-10" x="5.31543" y="0">A</tspan><tspan class="cls-11" x="17.98047" y="0">-Z],[a-z],[0-9],_</tspan></text>
+  <text class="cls-5" transform="translate(398.30045 694.92041)">/</text>
+  <text class="cls-5" transform="translate(445.11539 727.86572)">+</text>
+  <text class="cls-5" transform="translate(511.50309 746.2207)">,</text>
+  <circle class="cls-1" cx="384.33726" cy="959.39937" r="52.13093" transform="translate(-607.45919 1297.31503) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="384.33726" cy="959.39937" r="47.6132" transform="translate(-620.03226 1260.47693) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(350.02799 949.24756)">plus</text>
+  <circle class="cls-1" cx="650.94225" cy="959.39937" r="52.13093" transform="translate(-349.72627 1563.77235) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="650.94225" cy="959.39937" r="47.6132" transform="translate(-372.32664 1526.4112) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(611.91764 949.24756)">strlen</text>
+  <circle class="cls-1" cx="517.63976" cy="959.39937" r="52.13093" transform="matrix(0.03328, -0.99945, 0.99945, 0.03328, -478.59273, 1430.54368)"/>
+  <circle class="cls-1" cx="517.63976" cy="959.39937" r="47.6132" transform="translate(-496.17946 1393.44404) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(472.48063 949.24854)">comma</text>
+  <circle class="cls-1" cx="784.24474" cy="959.39937" r="52.13093" transform="translate(-220.8598 1697.00102) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="784.24474" cy="959.39937" r="47.6132" transform="translate(-248.47383 1659.37834) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(739.07438 949.24951)">symbol</text>
+  <g>
+    <line class="cls-1" x1="524.67057" y1="592.80939" x2="384.33735" y2="889.36249"/>
+    <polygon points="380.454 885.911 381.268 895.849 389.468 890.176 380.454 885.911"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="545.11448" y1="599.45575" x2="498.65018" y2="885.90338"/>
+    <polygon points="493.962 883.665 497.501 892.987 503.805 885.262 493.962 883.665"/>
+  </g>
+  <g>
+    <line x1="583.19052" y1="599.4557" x2="630.80373" y2="892.98652"/>
+    <g>
+      <line class="cls-1" x1="583.19053" y1="599.45575" x2="629.65476" y2="885.90338"/>
+      <polygon points="624.499 885.262 630.804 892.987 634.343 883.665 624.499 885.262"/>
+    </g>
+  </g>
+  <text class="cls-12" transform="translate(611.40406 717.89495) rotate(80.78616)">st<tspan class="cls-13" x="15.90234" y="0">r</tspan><tspan x="23.14258" y="0">len</tspan></text>
+  <text class="cls-5" transform="translate(382.57096 616.00146)">=</text>
+  <text class="cls-5" transform="translate(375.43619 537.55713)">&lt;</text>
+  <text class="cls-5" transform="translate(378.22867 455.74463)">&gt;</text>
+  <text class="cls-5" transform="translate(396.9777 382.26709)">~</text>
+  <text class="cls-5" transform="translate(403.79996 311.39014)">.</text>
+  <text class="cls-5" transform="translate(448.67789 259.3999)">*</text>
+  <text class="cls-14" transform="matrix(0.14313, 0.88235, -0.9871, 0.16012, 525.33774, 196.85624)">t<tspan class="cls-15" x="7.67917" y="0">ype_spec</tspan></text>
+  <text class="cls-5" transform="translate(620.3942 251.8584)">(</text>
+  <text class="cls-5" transform="translate(698.40299 259.39941)">)</text>
+  <g>
+    <line class="cls-1" x1="626.33774" y1="433.52313" x2="693.92045" y2="362.14337"/>
+    <polygon points="696.538 366.631 698.854 356.933 689.297 359.775 696.538 366.631"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M670.20081,571.89954c4.55285,11.14709,2.59167,23.92932-4.864,30.83923-7.77826,7.209-20.14483,6.73633-29.36133-1.68225" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="646.209 561.274 646.629 551.311 655.047 556.655 646.209 561.274"/>
+  </g>
+  <text class="cls-16" transform="matrix(0.84237, -0.5389, 0.5389, 0.84237, 634.14018, 619.64291)">whi<tspan class="cls-17" x="30.73242" y="0">t</tspan><tspan x="36.96655" y="0">e</tspan><tspan x="0" y="18.22852">spa</tspan><tspan class="cls-17" x="29.02637" y="18.22852">c</tspan><tspan x="37.81982" y="18.22852">e</tspan></text>
+  <text class="cls-9" transform="translate(657.19064 678.69266) rotate(63.68145)">[<tspan class="cls-10" x="5.31543" y="0">A</tspan><tspan class="cls-11" x="17.98047" y="0">-Z],[a-z],_</tspan></text>
+  <g>
+    <line x1="653.42351" y1="475.19156" x2="816.87187" y2="434.99885"/>
+    <g>
+      <line class="cls-1" x1="653.4235" y1="475.19159" x2="809.90372" y2="436.71234"/>
+      <polygon points="809.678 441.903 816.872 434.999 807.296 432.219 809.678 441.903"/>
+    </g>
+  </g>
+  <g>
+    <line x1="644.89862" y1="455.74447" x2="942.70159" y2="306.91611"/>
+    <g>
+      <line class="cls-1" x1="644.8986" y1="455.74445" x2="936.28281" y2="310.12396"/>
+      <polygon points="937.207 315.237 942.702 306.916 932.749 306.316 937.207 315.237"/>
+    </g>
+  </g>
+  <g>
+    <line x1="658.57177" y1="493.98916" x2="966.31349" y2="493.98925"/>
+    <g>
+      <line class="cls-1" x1="665.74747" y1="493.9892" x2="966.31351" y2="493.9892"/>
+      <polygon points="667.206 498.976 658.572 493.989 667.206 489.003 667.206 498.976"/>
+    </g>
+  </g>
+  <text class="cls-3" transform="translate(816.68961 183.18799)">decimal</text>
+  <circle class="cls-1" cx="843.61139" cy="179.0583" r="50.92593"/>
+  <text class="cls-3" transform="translate(1104.82535 183.18799)">exponent</text>
+  <circle class="cls-1" cx="1136.00171" cy="179.0583" r="50.92593"/>
+  <text class="cls-3" transform="translate(1249.81364 65.64795)">exponent<tspan x="16.9873" y="20.3999">sign</tspan></text>
+  <circle class="cls-1" cx="1280.98954" cy="70.97263" r="50.92593"/>
+  <circle class="cls-1" cx="1299.58287" cy="302.98457" r="52.13093" transform="translate(933.38021 1577.48304) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="1299.58287" cy="302.98457" r="47.6132" transform="translate(885.09594 1563.53778) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(1253.47867 273.92334)">number<tspan x="10.85352" y="20.3999">with</tspan><tspan x="-5.19238" y="40.7998">exponent</tspan></text>
+  <g>
+    <line class="cls-1" x1="948.78367" y1="253.9942" x2="892.68949" y2="210.08417"/>
+    <polygon points="896.912 207.057 887.039 205.661 890.765 214.909 896.912 207.057"/>
+  </g>
+  <text class="cls-5" transform="translate(920.77555 226.73291)">.</text>
+  <text class="cls-18" transform="translate(914.41813 149.78271)">[0-9]</text>
+  <circle class="cls-1" cx="1011.13316" cy="298.85292" r="52.13093" transform="translate(658.65886 1285.19893) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="1011.13316" cy="298.85292" r="47.6132" transform="translate(621.21538 1271.97499) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(967.39469 288.70068)">integer</text>
+  <g>
+    <path class="cls-6" d="M1065.49878,317.95947c4.55286,11.1471,2.59167,23.92932-4.864,30.83924-7.7782,7.209-20.1449,6.73632-29.36133-1.68225" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="1041.507 307.334 1041.927 297.371 1050.345 302.715 1041.507 307.334"/>
+  </g>
+  <text class="cls-18" transform="translate(1046.9943 346.54736)">[0-9]</text>
+  <circle class="cls-1" cx="1010.45332" cy="85.25455" r="52.13093" transform="translate(871.4817 1078.02921) rotate(-88.09296)"/>
+  <circle class="cls-1" cx="1010.45332" cy="85.25455" r="47.6132" transform="translate(833.64471 1072.84025) rotate(-85.93495)"/>
+  <text class="cls-3" transform="translate(964.34781 75.10205)">number</text>
+  <text class="cls-18" transform="translate(1046.43375 18.84229)">[0-9]</text>
+  <text class="cls-18" transform="matrix(0.88215, -0.47096, 0.47096, 0.88215, 824.68527, 356.61341)">[0-9]</text>
+  <g>
+    <line class="cls-1" x1="886.57047" y1="151.41632" x2="942.66465" y2="107.50641"/>
+    <polygon points="944.589 112.332 948.315 103.083 938.443 104.48 944.589 112.332"/>
+  </g>
+  <path class="cls-6" d="M1065.49878,65.55859c4.55286-11.147,2.59167-23.92944-4.864-30.83935-7.7782-7.209-20.1449-6.73609-29.36133,1.68237" transform="translate(-20.13851 -14.28192)"/>
+  <polygon points="1050.345 52.239 1041.927 57.583 1041.507 47.621 1050.345 52.239"/>
+  <g>
+    <line class="cls-1" x1="1034.22025" y1="254.15082" x2="1088.12357" y2="211.95575"/>
+    <polygon points="1090.048 216.781 1093.774 207.533 1083.901 208.929 1090.048 216.781"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="1087.31193" y1="146.99323" x2="1031.21781" y2="103.08331"/>
+    <polygon points="1089.237 142.168 1092.962 151.416 1083.09 150.02 1089.237 142.168"/>
+  </g>
+  <text class="cls-19" transform="translate(1060.88102 254.08594)">E<tspan class="cls-20" x="10.98535" y="0">,e</tspan></text>
+  <text class="cls-19" transform="translate(1060.08707 120.86035)">E<tspan class="cls-20" x="10.98535" y="0">,e</tspan></text>
+  <g>
+    <line class="cls-1" x1="1178.86759" y1="152.33978" x2="1234.96171" y2="108.42975"/>
+    <polygon points="1236.886 113.255 1240.612 104.007 1230.74 105.403 1236.886 113.255"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="1235.17594" y1="249.08356" x2="1179.08182" y2="205.17352"/>
+    <polygon points="1237.101 244.258 1240.826 253.507 1230.954 252.11 1237.101 244.258"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M1354.1748,321.97327c4.55286,11.14709,2.59168,23.92932-4.86389,30.83923-7.77832,7.209-20.14489,6.73633-29.36133-1.68225" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="1330.183 311.347 1330.603 301.385 1339.021 306.729 1330.183 311.347"/>
+  </g>
+  <text class="cls-18" transform="translate(1335.67008 350.56104)">[0-9]</text>
+  <text class="cls-18" transform="translate(1171.84977 254.08643)">[0-9]</text>
+  <text class="cls-5" transform="translate(1186.48063 116.76318)">+,-</text>
+  <g>
+    <line class="cls-1" x1="1280.98954" y1="229.39594" x2="1280.98954" y2="121.8985"/>
+    <polygon points="1285.976 227.937 1280.99 236.572 1276.004 227.937 1285.976 227.937"/>
+  </g>
+  <text class="cls-18" transform="translate(1286.66715 186.56104)">[0-9]</text>
+  <text class="cls-18" transform="matrix(0.68753, -0.72616, 0.72616, 0.68753, 664.12026, 427.92744)">EOF</text>
+  <text class="cls-5" transform="translate(734.65348 449.60303)">-</text>
+  <g>
+    <line x1="653.4943" y1="538.55736" x2="832.57543" y2="688.54152"/>
+    <g>
+      <line class="cls-1" x1="653.4943" y1="538.55731" x2="827.07426" y2="683.93414"/>
+      <polygon points="822.754 686.82 832.575 688.542 829.157 679.175 822.754 686.82"/>
+    </g>
+  </g>
+  <g>
+    <line x1="921.13386" y1="434.99945" x2="979.0997" y2="460.25972"/>
+    <g>
+      <line class="cls-1" x1="921.13389" y1="434.99945" x2="972.52146" y2="457.39301"/>
+      <polygon points="969.192 461.381 979.1 460.26 973.176 452.239 969.192 461.381"/>
+    </g>
+  </g>
+  <g>
+    <path class="cls-6" d="M1013.874,458.23987c4.76184-11.05933,15.255-18.61756,25.40906-18.141,10.59363.49731,18.92236,9.65088,19.37512,22.12524" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="999.044 444.145 991.643 450.826 989.556 441.076 999.044 444.145"/>
+  </g>
+  <g>
+    <line x1="658.57177" y1="514.48006" x2="821.38964" y2="572.80637"/>
+    <g>
+      <line class="cls-1" x1="665.32712" y1="516.90009" x2="821.38962" y2="572.80634"/>
+      <polygon points="665.019 522.086 658.572 514.48 668.382 512.698 665.019 522.086"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1113.06433" y1="435.01682" x2="1056.13846" y2="461.12671"/>
+    <g>
+      <line class="cls-1" x1="1106.54191" y1="438.00836" x2="1056.13846" y2="461.12677"/>
+      <polygon points="1103.137 434.084 1113.064 435.017 1107.294 443.148 1103.137 434.084"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1163.61314" y1="543.06323" x2="1163.61314" y2="474.55428"/>
+    <g>
+      <line class="cls-1" x1="1163.6132" y1="535.88751" x2="1163.6132" y2="474.55426"/>
+      <polygon points="1168.6 534.429 1163.613 543.063 1158.627 534.429 1168.6 534.429"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1118.78554" y1="449.05291" x2="1064.38507" y2="474.70378"/>
+    <g>
+      <line class="cls-1" x1="1118.78556" y1="449.05292" x2="1070.87552" y2="471.64337"/>
+      <polygon points="1070.069 466.511 1064.385 474.704 1074.322 475.531 1070.069 466.511"/>
+    </g>
+  </g>
+  <g>
+    <line x1="918.47207" y1="578.92175" x2="1115.59827" y2="578.92184"/>
+    <g>
+      <line class="cls-1" x1="918.47208" y1="578.92181" x2="1108.42252" y2="578.92181"/>
+      <polygon points="1106.964 583.908 1115.598 578.922 1106.964 573.936 1106.964 583.908"/>
+    </g>
+  </g>
+  <g>
+    <line x1="917.3492" y1="610.99058" x2="1115.59827" y2="610.99067"/>
+    <g>
+      <line class="cls-1" x1="924.52494" y1="610.99054" x2="1115.5983" y2="610.99066"/>
+      <polygon points="925.984 615.977 917.349 610.991 925.984 606.005 925.984 615.977"/>
+    </g>
+  </g>
+  <g>
+    <path class="cls-6" d="M1237.57812,589.92773c10.46509,5.95533,16.8169,17.21985,15.22059,27.25892-1.66541,10.47375-11.6836,17.7395-24.1316,16.8103" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="1216.667 580.901 1210.845 572.806 1220.766 571.81 1216.667 580.901"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M833.57874,747.929c-6.21314,10.31408-6.24122,23.246.06292,31.22033,6.577,8.31958,18.86914,9.75452,29.27069,2.85364" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="808.662 731.929 817.802 727.944 816.685 737.852 808.662 731.929"/>
+  </g>
+  <g>
+    <line x1="869.23844" y1="829.51806" x2="869.23844" y2="774.79238"/>
+    <g>
+      <line class="cls-1" x1="869.23844" y1="822.34235" x2="869.23844" y2="774.79242"/>
+      <polygon points="874.225 820.883 869.238 829.518 864.253 820.883 874.225 820.883"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1015.08114" y1="859.59403" x2="905.11352" y2="760.00543"/>
+    <g>
+      <line class="cls-1" x1="1015.08109" y1="859.59406" x2="910.43229" y2="764.8222"/>
+      <polygon points="914.861 762.106 905.114 760.005 908.167 769.497 914.861 762.106"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1007.42558" y1="696.98771" x2="916.85264" y2="704.22852"/>
+    <g>
+      <line class="cls-1" x1="1000.27268" y1="697.55951" x2="916.85264" y2="704.22845"/>
+      <polygon points="998.421 692.705 1007.426 696.988 999.216 702.646 998.421 692.705"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1007.42558" y1="719.39663" x2="919.85264" y2="724.87448"/>
+    <g>
+      <line class="cls-1" x1="1007.42557" y1="719.39667" x2="927.01438" y2="724.42645"/>
+      <polygon points="928.159 719.359 919.853 724.874 928.782 729.312 928.159 719.359"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1184.31392" y1="761.47251" x2="1105.53009" y2="727.99567"/>
+    <g>
+      <line class="cls-1" x1="1177.70963" y1="758.6662" x2="1105.53007" y2="727.99567"/>
+      <polygon points="1178.317 753.506 1184.314 761.472 1174.417 762.684 1178.317 753.506"/>
+    </g>
+  </g>
+  <g>
+    <line x1="1101.23206" y1="858.98901" x2="1178.94076" y2="825.99871"/>
+    <g>
+      <line class="cls-1" x1="1107.83719" y1="856.18488" x2="1178.94071" y2="825.99872"/>
+      <polygon points="1111.129 860.205 1101.232 858.989 1107.232 851.025 1111.129 860.205"/>
+    </g>
+  </g>
+  <text class="cls-5" transform="translate(873.1688 810.15419)">&quot;</text>
+  <text class="cls-5" transform="translate(751.37839 621.99162)">&quot;</text>
+  <text class="cls-18" transform="translate(1133.06409 731.39932)">[0-9]</text>
+  <text class="cls-18" transform="translate(1132.20189 865.77881)">[0-9]</text>
+  <text class="cls-18" transform="translate(930.58329 842.49393)">[0-9]</text>
+  <text class="cls-21" transform="translate(805.71964 791.73315)"><tspan class="cls-22">Σ</tspan><tspan x="11.66016" y="0">-\</tspan><tspan class="cls-23" x="26.24609" y="0">,</tspan><tspan x="28.60938" y="0">&quot;</tspan></text>
+  <text class="cls-5" transform="translate(955.45225 695.08732)">\</text>
+  <text class="cls-24" transform="translate(943.65515 748.07501) rotate(-3.5793)">&quot;<tspan class="cls-25" x="4.75" y="0">,\n,\t</tspan></text>
+  <text class="cls-5" transform="translate(751.32987 538.0632)">]</text>
+  <text class="cls-18" transform="translate(816.42112 515.9111)">EOL</text>
+  <text class="cls-5" transform="translate(944.69547 440.76669)">-</text>
+  <text class="cls-21" transform="translate(1009.96427 421.45331)"><tspan class="cls-22">Σ</tspan><tspan x="11.66016" y="0">-[</tspan></text>
+  <text class="cls-21" transform="translate(1013.63697 573.85431)"><tspan class="cls-22">Σ</tspan><tspan x="11.66016" y="0">-]</tspan></text>
+  <text class="cls-21" transform="translate(1015.90787 630.53143)">]</text>
+  <text class="cls-21" transform="translate(1239.29383 608.90125)"><tspan class="cls-22">Σ</tspan><tspan x="11.66016" y="0">-]</tspan></text>
+  <text class="cls-21" transform="translate(1168.6952 514.91122)">[</text>
+  <text class="cls-21" transform="translate(1080.15574 439.61957)">[</text>
+  <text class="cls-21" transform="translate(1095.51345 483.21143)"><tspan class="cls-22">Σ</tspan><tspan x="11.66016" y="0">-[</tspan></text>
+  <g>
+    <path class="cls-6" d="M838.9125,977.75159c4.55285,11.14709,2.59167,23.92932-4.864,30.83923-7.77826,7.209-20.14483,6.73633-29.36132-1.68225" transform="translate(-20.13851 -14.28192)"/>
+    <polygon points="814.921 967.126 815.341 957.164 823.759 962.507 814.921 967.126"/>
+  </g>
+</svg>

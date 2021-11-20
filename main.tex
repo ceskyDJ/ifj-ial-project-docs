@@ -5,22 +5,23 @@
 \usepackage{times}
 \usepackage[unicode]{hyperref} %pro křížové odkazy
 \usepackage{graphicx} %pro práci s obrázky
-\usepackage{lmodern} %fonty
 \usepackage{amsmath} %sazba matematiky
-\usepackage{xcolor}
+\usepackage{xcolor} %barvičky
 \usepackage{listings} %algoritmy, sazba kódu
+\usepackage{algpseudocode}
+\usepackage{pxfonts}
+
 \lstset{
   language=C,
-  numbers=left,
   numbersep=5pt,
-  breakatwhitespace=false,         
   breaklines=true,  
-  keepspaces=true,   
-  commentstyle=\color{green},
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{magenta},
-  stringstyle=\color{purple},
-  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  basicstyle=\ttfamily,
+  commentstyle=\color{gray},
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+  %numbers=left,
+  %numberstyle=\tiny\color{gray},
 }
 
 \title{Documentation for IFJ \& IAL project}
@@ -43,17 +44,16 @@
 		    \multicolumn{5}{c}{Tým 128, varianta II}\\[5pt]
             \textbf{Jméno} & \textbf{Příjmení} & \textbf{Xlogin} & \textbf{Rozdělení bodů} & \textbf{Role}\\
             \hline
-            Michal & Šmahel & xlogin99 & 35\% & vedoucí týmu \\[5pt]
-            Martin & Havlík & xlogin98 & 35\% &\\[5pt]
+            Michal & Šmahel & xsmahe01 & 35\% & vedoucí týmu \\[5pt]
+            Martin & Havlík & xhavli56 & 35\% &\\[5pt]
             Pavel  & Osinek & xosine00 & 30\% & 
         \end{tabular}\\[30pt]
         \textbf{Implementovaná rozšíření:} X, Y, Z
     \end{center}
     \vspace{\stretch{0.609}}
     {
-		\today
 		\hfill
-		Pavel Osinek
+		\today
 	}
 \end{titlepage}
 
@@ -64,18 +64,36 @@
 \section{Úvod}
     Zkouška citace~\cite{MedunaAlexander2008Eocd}.
     
+    Ukázka \uv{českých} uvozovek.
+    
     Ukázka kódu
     \begin{lstlisting}
-        #include <stdio.h>
-            int main() {
-                // printf() displays the string inside quotation
-                printf("Hello, World!");
-                return 0;
-            }\end{lstlisting}
+#include <stdio.h>
+
+int main() {
+    // printf() displays the string inside quotation
+    printf("Hello, World!");
+    return 0;
+}\end{lstlisting}
+          
+    \begin{algorithmic}
+        \State $i \gets 10$
+        \If{$i\geq 5$} 
+            \State $i \gets i-1$
+        \Else
+            \If{$i\leq 3$}
+                \State $i \gets i+2$
+            \EndIf
+        \EndIf 
+    \end{algorithmic}        
         
 \section{Implementace překladače}
     \subsection{Lexikální analýza}
         \subsubsection{Diagram konečného automatu}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.37]{images/FSM.pdf}
+        \end{figure}
     \subsection{Syntaktická analýza}
         \subsubsection{LL-gramatika}
         \subsubsection{LL-tabulka}
@@ -84,7 +102,9 @@
     \subsection{Generátor cílového kódu}
     \subsection{Tabulka symbolů}
     \subsection{Implementovaná rozšíření}
-\section{Rozdělení práce}
+\section{Práce v týmu}
+\subsection{Rozdělení práce}
+\subsection{Vývoj}
 \section{Závěr}
 
 \newpage
