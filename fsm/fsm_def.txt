@@ -13,6 +13,7 @@ number_with_exp
 decimal
 number
 minus
+decide_comm
 line_comm
 multi_line_comm1
 multi_line_comm2
@@ -85,6 +86,7 @@ EOL
 [
 ]
 Σ
+Σ-{[}
 _
 =
 lt
@@ -122,12 +124,13 @@ decimal:[0-9]>number
 number:e,E>exponent
 number:[0-9]>number
 s:->minus
-minus:->line_comm
+minus:->decide_comm
+decide_comm:Σ-{[}>line_comm
+decide_comm:[>multi_line_comm1
 line_comm:Σ>line_comm
 line_comm:EOL>s
-line_comm:[>multi_line_comm1
+multi_line_comm1:Σ-{[}>line_comm
 multi_line_comm1:[>multi_line_comm2
-multi_line_comm1:Σ>line_comm
 multi_line_comm2:Σ>multi_line_comm2
 multi_line_comm2:]>multi_line_comm3
 multi_line_comm3:Σ>multi_line_comm2
