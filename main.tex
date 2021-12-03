@@ -5,6 +5,7 @@
 \usepackage{times}
 \usepackage[unicode]{hyperref} %pro křížové odkazy
 \usepackage{graphicx} %pro práci s obrázky
+\usepackage{float}
 \usepackage{amsmath} %sazba matematiky
 \usepackage{xcolor} %barvičky
 \usepackage{listings} %algoritmy, sazba kódu
@@ -90,10 +91,10 @@ int main() {
 \section{Implementace překladače}
     \subsection{Lexikální analýza}
         \subsubsection{Diagram konečného automatu}
-        \begin{figure}               
-            \includegraphics[width=\linewidth]{images/FSM_v7.pdf}
-        \vspace{-60pt}
-        \end{figure}
+            \begin{figure}[H]
+               \includegraphics[width=\linewidth]{images/FSM_v8.pdf}
+                \caption{Diagram konečného automatu}
+            \end{figure}
     \subsection{Syntaktická analýza}
         \subsubsection{LL-gramatika}
         \subsubsection{LL-tabulka}
