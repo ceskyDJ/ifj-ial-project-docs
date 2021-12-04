@@ -738,9 +738,9 @@
     <path class="cls-5" d="M905.48417,854.45091c-6.42195,10.66073-6.451,24.02722.065,32.26959,6.798,8.59918,19.50329,10.08235,30.25442,2.94954" transform="translate(-32.14572 -38.81659)"/>
     <polygon points="868.4 813.859 877.847 809.74 876.692 819.981 868.4 813.859"/>
   </g>
-  <text class="cls-19" transform="translate(831.24978 877.73926) scale(0.87669 1)">Σ - { \ , &quot; }</text>
+  <text class="cls-19" transform="translate(827.24978 878.73926) scale(0.87669 1)">Σ - { \ , &quot; }</text>
   <text class="cls-4" transform="translate(1035.6273 780.94641)">\</text>
-  <text class="cls-20" transform="translate(1000.13159 848.63662)">{ <tspan class="cls-21" x="11.54102" y="0">&quot;</tspan><tspan x="16.75293" y="0" xml:space="preserve">,  \, n, t }</tspan></text>
+  <text class="cls-20" transform="translate(1011.67163 848.63662)"><tspan class="cls-21">&quot;</tspan><tspan x="5.21191" y="0" xml:space="preserve">,  \, n, t</tspan></text>
   <text class="cls-4" transform="translate(832.02672 594.67151)">]</text>
   <text class="cls-4" transform="translate(822.26626 520.9176)">EOL</text>
   <g>
