@@ -11,6 +11,9 @@
 \usepackage{listings} %algoritmy, sazba kódu
 \usepackage{algpseudocode}
 \usepackage{pxfonts}
+\usepackage{import}
+
+\newcommand\Alpha{\mathrm{A}} % Alpha
 
 \lstset{
   language=C,
@@ -92,8 +95,15 @@ int main() {
     \subsection{Lexikální analýza}
         \subsubsection{Diagram konečného automatu}
             \begin{figure}[H]
-               \includegraphics[width=\linewidth]{images/FSM_v8.pdf}
-                \caption{Diagram konečného automatu}
+            \includegraphics[width=\linewidth]{images/FSM_v9.pdf}
+                Legenda: 
+                \begin{itemize}
+                    \item $\Alpha$ - znaky A-B z ASCII tabulky
+                    \item $\alpha$ - znaky a-b z ASCII tabulky
+                    \item $\gamma$ - znaky 0-9 z ASCII tabulky
+                    \item $\Sigma$ - množina všech znaků ASCII tabulky
+                \end{itemize}
+            \caption{Diagram konečného automatu}
             \end{figure}
     \subsection{Syntaktická analýza}
         \subsubsection{LL-gramatika}
