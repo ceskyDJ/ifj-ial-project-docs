@@ -2,12 +2,14 @@
 \usepackage[left=2cm, text={17cm,24cm}, top=3cm]{geometry}
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
+% ROZBÍJÍ TUČNÉ NADPISY
+%\usepackage[IL2]{fontenc} %umožňuje vykopírovat správně text s diakritikou
 \usepackage{times}
 \usepackage[unicode]{hyperref} %pro křížové odkazy
 \usepackage{graphicx} %pro práci s obrázky
 \usepackage{float}
 \usepackage{amsmath} %sazba matematiky
-\usepackage{xcolor} %barvičky
+\usepackage[table,xcdraw]{xcolor} %barvičky
 \usepackage{listings} %algoritmy, sazba kódu
 \usepackage{algpseudocode}
 \usepackage{pxfonts}
@@ -15,11 +17,13 @@
 \usepackage{multicol}
 \usepackage{pdflscape}
 \usepackage{multicol}
+\usepackage{paracol}
 \usepackage{enumitem}
 \usepackage{longtable}
 
-\newcommand\Alpha{\mathrm{A}} % Alpha
 
+\newcommand\Alpha{\mathrm{A}} % Alpha
+\setlength{\columnsep}{2pt}
 \lstset{
   language=C,
   numbersep=5pt,
@@ -76,13 +80,13 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
     \subsection{Lexikální analýza}
     V první fázi vývoje jsme se věnovali lexikální analýze a pomocným abstraktním datovým typům, které společně s ní využívají i další funkční celky. Klíčový modul spadající do lexikální analýzy je skener. Ten postupně načítá znaky ze standardního vstupu a pomocí konečného automatu (diagramu je věnována podkapitola \ref{sec:fsm-diagram}) sestavuje tokeny, s nimiž se následně pracuje převážně v syntaktické analýze.
     
-    Náš skener na doručení z přednášky od doktorky Burgetové rovnou ukládá nově nalezené identifikátory do aktuálně nejlokálnější tabulky symbolů. Během syntaktické analýzy je již kostra tabulky připravená a není je možné s ní rovnou pracovat. Za poznámku jistě stojí zmínka o tom, jak poznáme, zda byla již proměnná deklarována nebo ji jen skener načetl na pravé straně. Tady spoléháme na prostý předpoklad, že deklarovaná proměnná má již u svého identifikátoru uvedeno, že se jedná o proměnnou (nikoliv funkci) a má přidělen typ.
+    Náš skener na doporučení z přednášky od doktorky Burgetové rovnou ukládá nově nalezené identifikátory do aktuálně nejlokálnější tabulky symbolů. Během syntaktické analýzy je již kostra tabulky připravená a je možné s ní rovnou pracovat. Za poznámku jistě stojí zmínka o tom, jak poznáme, zda byla již proměnná deklarována nebo ji jen skener načetl na pravé straně přiřazení. Tady spoléháme na prostý předpoklad, že deklarovaná proměnná má již u svého identifikátoru uvedeno, že se jedná o proměnnou (nikoliv funkci) a má přidělen typ.
     
     Při tvorbě diagramu jsme využili online simulátoru\cite{fsm-simulator}, který po zadání formální definice automatu generuje ekvivalentní diagram. Tento diagram bylo následně nutné ručně upravit, ale během návrhu konečného automatu nám tento nástroj velmi zpříjemnil práci.
     
         \subsubsection{Diagram konečného automatu}
         \label{sec:fsm-diagram}
-        Konečný automat, který je srdcem skeneru, je implementován podle diagramu na obrázku \ref{fig:fsm-diagram}. Pro zvýšení přehlednosti nejsou jednoprvkové množiny přípustných znaků uváděny do složených závorek. Některé rozsáhlejší množiny jsou zastoupeny řeckými písmeny, k nimž se vztahuje následující legenda:
+        Konečný automat, který je srdcem skeneru, je implementován podle diagramu na obrázku \ref{fig:fsm-diagram}. Pro zvýšení přehlednosti nejsou jednoprvkové množiny přípustných znaků uváděny do složených závorek, stejně tak není uveden chybový stav zajišťující úplnost. Některé rozsáhlejší množiny jsou zastoupeny řeckými písmeny, k nimž se vztahuje následující legenda:
         \begin{itemize}
             \item $\Alpha$ -- znaky A-Z z ASCII tabulky
             \item $\alpha$ -- znaky a-z z ASCII tabulky
@@ -91,20 +95,102 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
         \end{itemize}
     
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{images/FSM_v11.pdf}
+        \includegraphics[width=\linewidth]{images/FSM_v12.pdf}
         \caption{Diagram konečného automatu}
         \label{fig:fsm-diagram}
         \end{figure}
     \subsection{Syntaktická analýza}
-        \subsubsection{LL-gramatika, SA shora dolů}
-        \begin{multicols}{2}
+    Syntaktickou analýzu máme rozdělenou do dvou modulů podle toho, jaká metoda je použita. Metoda shora dolů je implementována v modulu \texttt{parser.c} a zdola nahoru poté v \texttt{expr\_parser.c}. Výhodou tohoto rozdělení bylo, že mohl na každé metodě pracovat jiný člen týmu. Navíc je spolehlivě oddělen kód pro obě z metod, a tedy nedochází k mísení.
+    
+        \subsubsection{SA shora dolů}
+        Při návrhu LL gramatiky (viz níže) jsme využili online nástroj\cite{LL-grammar-simulator} pro  vizualizaci tvorby derivačního stromu a odzkoušení funkčnosti gramatiky. V implementaci jsme potom zvolili doporučenou metodu rekurzivního sestupu, převážně díky její přímočaré realizaci přepisem z pravidel gramatiky. Implementace se nachází v souboru \texttt{parser.c}. Doprovodná LL tabulka se bohužel nevešla na jednu stránku, je tedy dostupná jako tabulka \ref{tab:ll-tab-1} a tabulka \ref{tab:ll-tab-2}.\\
         
-        TODO vměstnat sem očíslovaná pravidla gramatiky, já už jsem s tím texem levej, musím to všechno googlit a trvá to, pokud s tím někdo umíte víc, budu rád za pomoc
-        \end{multicols}
-        Při návrhu LL gramatiky jsme využili online nástroj\cite{LL-grammar-simulator} pro  vizualizaci tvorby derivačního stromu a odzkoušení funkčnosti gramatiky. V implementaci jsme potom zvolili doporučenou metodu rekurzivního sestupu, převážně díky její přímočaré realizaci přepisem z pravidel gramatiky. Implementace se nachází v souboru \texttt{parser.c}.
+        \begin{paracol}{2}
+            \noindent
+            \verb#1: PROG = REQUIRE CODE#\\
+            \verb#2: REQUIRE ::= require "ifj21"#\\
+            \verb#3: CODE ::= CODE' CODE''#\\
+            \verb#4: CODE ::= ''#\\
+            \noindent
+            \verb#5: CODE' ::= FUN_DEC#\\
+            \verb#6: CODE' ::= FUN_DEF#\\
+            \verb#7: CODE' ::= CALL#\\
+            \verb#8: CODE'' ::= CODE' CODE''#\\
+            \verb#9: CODE'' ::= ''#\\
+            \verb#10: FUN_DEC ::= global id : FUN_SIGNATURE#\\
+            \verb#11: FUN_SIGNATURE = function (TYPE_LIST) FUN_RET#\\
+            \verb#12: TYPE_LIST::= TYPE TYPE_LIST'#\\
+            \verb#13: TYPE_LIST::= ''#\\
+            \verb#14: TYPE_LIST' ::= , TYPE TYPE_LIST'#\\
+            \switchcolumn
+            \noindent
+            \verb#15: TYPE_LIST' ::= ''#\\
+            \verb#16: FUN_RET ::= : FUN_RET_LIST#\\
+            \verb#17: FUN_RET ::= ''#\\
+            \verb#18: CALL ::= id ( TERM_SEQ )#\\
+            \verb#19: TERM_SEQ ::= TERM TERM_SEQ'#\\
+            \verb#20: TERM_SEQ ::= ''#\\
+            \verb#21: TERM_SEQ' ::= , TERM TERM_SEQ'#\\
+            \verb#22: TERM_SEQ' ::= ''#\\
+            \verb#23: FUN_RET_LIST ::= TYPE FUN_RET_LIST'#\\
+            \verb#24: FUN_RET_LIST' ::= , TYPE FUN_RET_LIST'#\\
+            \\
+            \verb#25: FUN_RET_LIST' ::= ''#\\
+            \verb#26: RET_STMT ::= return RET_E_LIST#\\
+            \verb#27: RET_E_LIST ::= E_LIST#\\
+            \verb#28: RET_E_LIST ::= ''#\\
+            \end{paracol}
+            \begin{paracol}{2}
+            \noindent
+            \verb#29: FUN_DEF = function id (PARAM_LIST) FUN_RET BODY end#\\
+            \verb#30: PARAM_LIST ::= PARAM PARAM'#\\
+            \verb#31: PARAM_LIST ::= ''#\\
+            \verb#32: PARAM ::= id : TYPE#\\
+            \verb#33: PARAM' ::= , PARAM PARAM'#\\
+            \verb#34: PARAM' ::= ''#\\
+            \verb#35: BODY ::= BODY' BODY''#\\
+            \verb#36: BODY ::= ''#\\
+            \verb#37: BODY' ::= VAR_DEC_DEF#\\
+            \verb#38: BODY' ::= STMT#\\
+            \verb#39: BODY' ::= IF#\\
+            \verb#40: BODY' ::= WHILE#\\
+            \verb#41: BODY' ::= RET_STMT#\\
+            \verb#42: BODY' ::= CALL#\\
+            \verb#43: BODY'' ::= BODY' BODY''#\\
+            \verb#44: BODY'' ::= ''#\\
+            \verb#45: TERM ::= id#\\
+            \verb#46: TERM ::= integer#\\
+            \verb#47: TERM ::= number#\\
+            \switchcolumn
+            \verb##\\
+            \verb#48: TERM ::= string#\\
+            \verb#49: TERM ::= nil#\\
+            \verb#50: VAR_DEC_DEF ::= VAR_DEC VAR_ASSIGN#\\
+            \verb#51: VAR_DEC ::= local id : TYPE#\\
+            \verb#52: TYPE ::= integer#\\
+            \verb#53: TYPE ::= number#\\
+            \verb#54: TYPE ::= string#\\
+            \verb#55: VAR_ASSIGN ::= = e#\\
+            \verb#56: VAR_ASSIGN ::= ''#\\
+            \verb#57: STMT ::= ID_SEQ = E_LIST/CALL#\\
+            \verb#58: ID_SEQ ::= id ID_SEQ'#\\
+            \verb#59: ID_SEQ' ::= , id ID_SEQ'#\\
+            \verb#60: ID_SEQ' ::= ''#\\
+            \verb#61: E_LIST ::= e E'#\\
+            \verb#62: E' ::= , e E'#\\
+            \verb#63: E' ::= ''#\\
+            \verb#64: IF ::= if e then BODY else BODY end#\\
+            \verb#65: WHILE ::= while e do BODY end#
+        \end{paracol}
+
+        Porušení LL gramatiky u volání funkcí na pravé straně přiřazení, viz pravidlo gramatiky \verb#57#, a v těle funkce, viz tabulku \ref{tab:ll-tab-1}, řešíme následovně.
         
-        Porušení LL gramatiky u volání funkcí na pravé straně přiřazení nebo v těle funkce řešíme ukládáním druhu identifikátoru do jej reprezentujícího typu \texttt{identifier\_t}. Potom tedy příchozí token obsahující identifikátor nese informaci zda se jedná o proměnnou/funkci, z čehož rozhodneme, jestli se zanořit do pravidla volání funkce či se přepnout na syntaktickou analýzu zdola nahoru.
+        Identifikátor reprezentujeme pomocí \texttt{identifier\_t}, který mimo jiné obsahuje informaci, zda se jedná identifikátor proměnné či funkce (viz kapitolu \ref{sec:symtable}). Při zpracování tokenu obsahujícího identifikátor tedy lze rozhodnout, zda zpracovávat levou stranu přiřazení, volat funkci nebo zda přepnout na syntaktickou analýzu zdola nahoru.
         
+        %filler
+        Přepínání řešíme vcelku jednoduše, dokážeme skeneru vrátit poslední načtený token, který již patří do výrazu. Následně zavoláme funkci, která spustí analýzu metodou zdola nahoru a zpracuje celý výraz až po první nevalidní výrazový token, jenž je opět vrácen skeneru, aby po přepnutí zpět mohl být zpracován SA shora dolů.
+        
+        \newpage
         \subsubsection{LL-tabulka}
         \begin{table}[ht!]
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|l|}
@@ -132,7 +218,7 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
         PARAM &  &  &  & 32 &  &  &  &  &  &  &  &  \\ \hline
         PARAM' &  &  &  &  &  &  &  & 34 & 33 &  &  &  \\ \hline
         BODY &  &  &  & 35 &  &  &  &  &  & 35 & 36 &  \\ \hline
-        BODY' &  &  &  & 38/42 &  &  &  &  &  & 41 & 44 &  \\ \hline
+        BODY' &  &  &  & \cellcolor[HTML]{FFCCC9}38/42 &  &  &  &  &  & 41 & 44 &  \\ \hline
         BODY'' &  &  &  & 43 &  &  &  &  &  & 43 &  &  \\ \hline
         TERM &  &  &  & 45 &  &  &  &  &  &  &  &  \\ \hline
         VAR\_DEC\_DEF &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
@@ -148,12 +234,13 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
         WHILE &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
         \end{tabular}
         \caption{LL tabulka (1. část)}
-    \end{table}
+        \label{tab:ll-tab-1}
+        \end{table}
 
-    \begin{table}
+        \begin{table}
         \begin{tabular}{|c|c|c|c|c|c|l|c|c|c|c|c|}
         \hline
-         & integer & number & string & nil & local & e & if & then & else & while & do \\ \hline
+         & integer & number & string & nil & local & výraz & if & then & else & while & do \\ \hline
         PROG &  &  &  &  &  &  &  &  &  &  &  \\ \hline
         REQUIRE &  &  &  &  &  &  &  &  &  &  &  \\ \hline
         CODE &  &  &  &  &  &  &  &  &  &  &  \\ \hline
@@ -191,57 +278,63 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
         IF &  &  &  &  &  &  & 64 &  &  &  &  \\ \hline
         WHILE &  &  &  &  &  &  &  &  &  & 65 &  \\ \hline
         \end{tabular}
-        \caption{LL tabulka (1. část)}
-    \end{table}
+        \caption{LL tabulka (2. část)}
+        \label{tab:ll-tab-2}
+        \end{table}
+        \newpage
         
         \subsection{SA zdola nahoru}
-        \subsubsection{Precedenční tabulka}
+        Jádrem naší syntaktické analýzy pro zpracování výrazů je precedenční tabulka (viz tabulku \ref{tab:prec-tab}). Tato tabulka je přesně přepsána do jazyka C s využitím dvojrozměrného statického pole a enumeračních konstant zastupujících znaky \texttt{<}, \texttt{>}, \texttt{=} a prázdnou buňku. Dále máme implementovaný speciální zásobník jako ADT, aby bylo možné zpracovávat tokeny zásobníkovým automatem představeným na přednášce.
         
-        \begin{table}[ht]
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-        \hline
-         & \# & * & / & // & + & - & .. & \textless{} & \textless{}= & \textgreater{} & \textgreater{}= & == & $\sim$= & ( & ) & term & \$ \\ \hline
-        \# &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        * & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        / & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        // & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        + & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        - & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        .. & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        \textless{}= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        \textgreater{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        \textgreater{}= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        == & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        $\sim$= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
-        ( & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & = & \textless{} &  \\ \hline
-        ) &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} &  & \textgreater{} &  & \textgreater{} \\ \hline
-        term &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} &  & \textgreater{} &  & \textgreater{} \\ \hline
-        \$ & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  & \textless{} &  \\ \hline
-        \end{tabular}
+        Pravidla jsou implementována jako funkce se shodnou signaturou. To nám dovoluje seskupení pravidel do statického pole. Pravidla totiž vyhodnocujeme jejich postupným voláním při procházení zmíněného pole a následným posuzováním navrácené hodnoty. Kromě vyhodnocení, zda dané pravidlo vyhovuje, jsou v těchto funkcích zastoupeny také syntaktické a sémantické kontroly a sémantické akce.
+        
+        \begin{table}[h!]\centering %better centered, right? Yep :D
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+             & \# & * & / & // & + & - & .. & \textless{} & \textless{}= & \textgreater{} & \textgreater{}= & == & $\sim$= & ( & ) & term & \$ \\ \hline
+            \# &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            * & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            / & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            // & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            + & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            - & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            .. & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            \textless{}= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            \textgreater{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            \textgreater{}= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            == & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            $\sim$= & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  &  &  &  &  &  & \textless{} & \textgreater{} & \textless{} & \textgreater{} \\ \hline
+            ( & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & = & \textless{} &  \\ \hline
+            ) &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} &  & \textgreater{} &  & \textgreater{} \\ \hline
+            term &  & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} & \textgreater{} &  & \textgreater{} &  & \textgreater{} \\ \hline
+            \$ & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} & \textless{} &  & \textless{} &  \\ \hline
+            \end{tabular}
+            \caption{Precedenční tabulka}
+            \label{tab:prec-tab}
         \end{table}
     
     \subsection{Sémantická analýza}
-    Sémantické kontroly a akce jsme vpisovali přímo do jednotlivých funkcí rekurzivního sestupu SA shora dolů a do funkcí představující aplikovaná pravidla v SA zdola nahoru.
+    Sémantické kontroly a akce jsme vpisovali přímo do jednotlivých funkcí rekurzivního sestupu SA shora dolů a do funkcí představujících aplikovaná pravidla v SA zdola nahoru.
+    
+    Kromě povinných kontrol máme implementovanou kontrolu dělení nulovým číselným literálem, která se vyhodnocuje již během překladu. Pokud je nula ukryta v proměnné, odhalí se to klasickým způsobem za běhu programu.
     
     \subsection{Generátor cílového kódu}
-    Jelikož si žádnou vnitřní reprezentaci kódu nevytváříme, cílový kód generujeme rovnou při analýze. To znamená pár ústupků efektivnímu (generování) kódu:
-    \begin{itemize}
-        \item Vestavěné funkce generujeme v jednom bloku, který přeskočíme, na začátku cílového kódu
-        \item Každý kód těla funkce je též obalen skokem přes něj
-        \item Výpočty výrazů provádíme pomocí zásobníkových instrukcí s využitím přirozeného postfixového zpracování SA zdola nahoru
-    \end{itemize}
+    Generování kódu řešíme přímo během zpracování tokenů syntaktickými a sémantickými kontrolami. Sémantické akce tak rovnou volají funkce z generátoru, který vypisuje kód na standardní výstup. Rozhodli jsme se pro to poté, co se jeden člen týmu rozhodl snížit svou aktivitu na minimum, kdy jsme si uvědomili, že bychom komplikovanější postup nestihli zhotovit včas.
+    
+    Bohužel má tento způsob své nevýhody, a museli jsme podniknout několik ústupků. Veškeré funkce (včetně vestavěných) přeskakujeme nepodmíněnými skoky, aby se jejich kód neprováděl, kdy nemá. Nejsou totiž někde na začátku/konci výsledného souboru, ale rozmístěné všude po něm. K vyhodnocování výrazů využíváme převážně zásobníkové instrukce s využitím přirozeného postfixového zpracování syntaktické analýzy zdola nahoru. Deklarace proměnných v cyklech řešíme podobně jako funkce -- kód pro deklaraci všech proměnných objevujících se v cyklech je generován těsně přes koncem funkce, kam se skočí po zavolání funkce. Následně se zpracování vrací na začátek funkce a potřebné proměnné jsou již deklarovány. Na konci provádění funkce se blok s deklaracemi přeskakuje.
     
     \subsection{Tabulka symbolů}
-    Pro naši variantu jsme implementaci pomocí tabulky s rozptýlenými položkami převzali z domácího úkolu z předmětu IJC. Jako položku tabulky jsme vytvořili strukturu \texttt{identifier\_t} uchovávající potřebné informace o identifikátoru. Mezi ukládané informace patří název, pozice ve vstupním kódu pro jednoznačné pojmenování, typ (proměnná/funkce) a dále specifické informace pokud se jedná o proměnnou, zejména její typ, nebo pokud se jedná o funkci, kde nejdůležitější je její signatura.
+    \label{sec:symtable}
     
-    Pro rozsahy platnosti proměnných využíváme \texttt{symstack\_t}, zásobníkový ADT, do kterého si ukládáme ukazatele na nově vzniklé lokální tabulky symbolů pro každý začínající blok a ze kterého je opět odstraňujeme na konci bloku. Při vyhledávání proměnné prohledáme nejlokálnější tabulku symbolů, při nenalezení získáme ze \texttt{symstack\_t} nadřazenou tab. symb., opět prohledáme atd.
+    Vybrali jsme si variantu, kde má být tabulka symbolů implementována pomocí tabulky s rozptýlenými položkami, jelikož jsme již měli její základní implementaci z domácího úkolu z předmětu IJC. Jako položku tabulky jsme použili nově vytvořenou strukturu \texttt{identifier\_t} uchovávající potřebné informace o identifikátoru. Mezi ukládané informace patří název, pozice ve vstupním kódu pro jednoznačné pojmenování, typ (proměnná/funkce) a dále specifické informace. Pokud se jedná o proměnnou, zahrnují zejména její typ, v případě funkce pak její signaturu. Kromě toho si uchováváme další informace, které potřebujeme k analýze.
+    
+    Pro rozsahy platnosti proměnných využíváme \texttt{symstack\_t}, zásobníkový ADT, do kterého si ukládáme ukazatele na nově vzniklé lokální tabulky symbolů pro každý začínající blok. Na konci bloku odpovídající tabulku symbolů (na vrcholu) zase mažeme. Při vyhledávání proměnné začínáme od nejlokálnější tabulky symbolů a postupujeme do globálnějších tabulek, dokud proměnnou nenalezneme nebo neprojdeme všechny tabulky.
     
     \subsection{Implementovaná rozšíření}
     
     Implementace rozšíření nás sice původně lákala, ale nakonec na tuto fázi projektu nezbyl čas, jelikož jsme řešili projekt víceméně ve dvou lidech s občasnými drobnými příspěvky třetího člena. Podrobněji se této problematice věnuje kapitola \ref{sec:tasks-division}.
     
-% \newpage
 \section{Práce v týmu}
 \label{sec:team-work}
 
@@ -256,15 +349,18 @@ Cílem bylo, aby měl každý člen alespoň základní povědomí o všech čá
 
 \subsection{Využité nástroje a procesy}
 
-Kvůli jednoduší spolupráci na tvorbě projektu jsme se rozhodli využít verzovací systém Git se vzdáleným repozitářem hostovaným službou Github. Na této službě jsme kromě funkce vzdáleného repozitáře pro správu verzí projektu využili také několik dalších funkcí, které budou popsány v dalších odstavcích.
+Kvůli jednoduší spolupráci na tvorbě projektu jsme se rozhodli využít verzovací systém Git se vzdáleným repozitářem hostovaným službou Github. Na této službě jsme kromě funkce vzdáleného repozitáře pro správu verzí projektu využili také několik dalších funkcí:
+\begin{itemize}
+    \item Github project boards\cite{gh-proj-boards} pro organizaci úkolů a jasný přehled o aktuálním stavu projektu,
+    \item Github issues\cite{gh-issues} a jako reprezentaci úkolů,
+    \item Github pull requests\cite{gh-pull-requests} pro jednoduší, přehlednější a interaktivnější revize kódu,
+    \item Github Actions\cite{gh-actions} pro automatizaci úkolů, spouštění automatických testů a kontrol,
+    \item Github API\cite{gh-api} pro účely skriptu pro výpočet bodového rozdělení.
+\end{itemize}
 
-Github nabízí možnost vytvořit si projekt, který se naváže na repozitáře a umožňuje zřídit automatizované plánování úkolů metodou Kanban, která spočívá v rozdělování úkolů do několika fází. Mezi tyto fáze patří \uv{Naplánováno} (\uv{Backlog} nebo \uv{To do}), kde jsou naplánované úkoly, na nichž zatím nikdo nepracuje; \uv{V procesu} (\uv{In progress}) s rozpracovanými úkoly a \uv{Hotovo} (\uv{Done}), která obsahuje dokončené úkoly. Kromě těchto základních fází jsme používali ještě některé rozšířené pro označení stavu revizí požadavků na začlenění změn. Díky tomu bylo možné na jedné obrazovce vidět, jak si tým stojí a v jakém stavu rozpracování aktuálně projekt je.
+Služba Github dále poskytuje různé možnosti omezení přístupu k větvím a určitým typům změn\cite{gh-protected-branches}. Díky tomu bylo možné uzamknout výchozí větev a pro veškeré změny vynucovat revize od jiného člena týmu. Autor změn tak vždy dostal zpětnou vazbu od někoho dalšího a podařilo se tak odhalit mnoho chyb, kterých si autor nevšiml. Začleňování změn do hlavní větve bylo prováděno výhradně pomocí webového rozhraní pro žádosti o začlenění změn (běžněji známo pod anglickým pojmem \uv{pull request}). Tam je možné změny komentovat a navrhovat různé úpravy a opravy chyb nalezených během revize.
 
-Služba Github poskytuje různé možnosti omezení přístupu k větvím a určitým typům změn. Díky tomu bylo možné uzamknout výchozí větev a pro veškeré změny vynucovat revize od jiného člena týmu. Autor změn tak vždy dostal zpětnou vazbu od někoho dalšího a podařilo se tak odhalit mnoho chyb, kterých si autor nevšiml. Začleňování změn do hlavní větve bylo prováděno výhradně pomocí webového rozhraní pro žádosti o začlenění změn (běžněji známo pod anglickým pojmem \uv{pull request}). Tam je možné změny komentovat a navrhovat různé úpravy a opravy chyb nalezených během revize.
-
-Poslední důležitou funkcí poskytovanou Githubem je Github Actions. Tato funkce umožňuje automatické spouštění testů a různých akcí využívajících Github API pro správu repozitářů a projektů. Díky tomu bylo možné automaticky spouštět testy pro veškeré provedené změny, díky čemuž jsme měli vždy přehled o tom, jestli změna nerozbíjí dříve implementované funkcionality apod. Navíc jsme díky sadě pravidel docílili úplné automatizace Kanban fází, takže nebylo nutné mezi nimi úkoly ručně přesouvat. To zamezilo vzniku chyb a zobrazený přehled vždy reflektovat aktuální stav projektu.
-
-Samotné psaní kódu si pak členové týmu zařídili po svém podle toho, co komu vyhovovalo. K dispozici byla poměrně komplexní konfigurace nástroje Make, která poskytovala automatickou kompilaci a sestavování zdrojových kódů, jednotkových a manuálních testů, přípravu výsledného archivu pro odevzdání a další drobnosti.
+Samotné psaní kódu si pak členové týmu zařídili po svém podle toho, co komu vyhovovalo. K dispozici byla poměrně komplexní konfigurace nástroje Make\cite{make-official-docs}\cite{make-cheatsheet}, která poskytovala automatickou kompilaci a sestavování zdrojových kódů, jednotkových a manuálních testů, přípravu výsledného archivu pro odevzdání a další drobnosti. Pro jednotkové (\uv{unit}) testy využíváme minimalistický framework Unity\cite{unity}.
 
 \subsection{Rozdělení úkolů}
 \label{sec:tasks-division}
@@ -281,8 +377,10 @@ Michal Šmahel se dále, coby vedoucí týmu, podílel na organizaci práce a do
 
 Důvodem, proč tato kapitola nabývá nadměrné délky, je problém s jedním členem týmu, který se rozhodl projektu věnovat minimum času a úsilí, což bylo nutné dále řešit nerovnoměrným rozdělením bodů. Kvůli této záležitosti byl osloven i dr. Křivka, který povolil výrazné snížení bodů Pavlu Osinkovi, pokud bude dostatečně prokazatelné, kdo měl na čem jaký podíl. Dohodli jsme se na zavedení bodového systému k úkolům zmíněným v kapitole \ref{sec:way-to-work-on-project}, podle něhož se následně spočítala procenta a po drobné korekci v řádu malých jednotek procent prohlásila za finální rozdělení bodů. Doufám, že tato kapitola splnila svůj účel a dokreslila, jakým způsobem se jednotliví členové na projektu podíleli a výsledné bodové rozdělení je tím dostatečně odůvodněné. V případě problémů jsou je k dispozici historie úkolů a jejich bodování včetně automatického hodnotícího skriptu.
 
-\section{Vývoj}
 \section{Závěr}
+Ačkoliv jsme se poslední dva týdny před odevzdáním projektu báli, abychom ve dvou vše stihli dokončit, nakonec se nám to podle našeho názoru podařilo poměrně uspokojivě. Víme sice o několika nedokonalostech, které projekt tíží, ale celkově jsme se svými výkony poměrně spokojení.
+
+Projekt byl velmi zajímavý a jsme rádi, že jsme si mohli zkusit něco takového navrhnout a naprogramovat. Díky negativní zkušenosti máme také jisté ponaučení ohledně práce v týmu, což se nám jistě bude v životě hodit.
 
 \newpage
 
