@@ -75,10 +75,10 @@ Cílem projektu bylo vytvořit překladač imperativního programovacího jazyka
         
 \section{Implementace překladače}
 
-Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace práce v týmu a další informace lze nalézt v kapitole \ref{sec:team-work}.
+Tato kapitola se bude věnovat samotné práci na překladači. Způsob organizace práce v týmu a další informace lze nalézt v kapitole \ref{sec:team-work}.
 
     \subsection{Lexikální analýza}
-    V první fázi vývoje jsme se věnovali lexikální analýze a pomocným abstraktním datovým typům, které společně s ní využívají i další funkční celky. Klíčový modul spadající do lexikální analýzy je skener. Ten postupně načítá znaky ze standardního vstupu a pomocí konečného automatu (diagramu je věnována podkapitola \ref{sec:fsm-diagram}) sestavuje tokeny, s nimiž se následně pracuje převážně v syntaktické analýze.
+    V první fázi vývoje jsme se věnovali lexikální analýze a pomocným abstraktním datovým typům, které společně s ní využívají i další funkční celky. Klíčový modul spadající do lexikální analýzy je skener. Ten postupně načítá znaky ze standardního vstupu a pomocí konečného automatu (diagramu je věnována podkapitola \ref{sec:fsm-diagram}) sestavuje tokeny, s nimiž se následně pracuje převážně v syntaktické analýze. Načítané znaky jsou ukládány do instance ADT \texttt{string\_factory}, která díky dynamickému zvětšování dokáže načíst jakkoli dlouhý vstupní symbol.
     
     Náš skener na doporučení z přednášky od doktorky Burgetové rovnou ukládá nově nalezené identifikátory do aktuálně nejlokálnější tabulky symbolů. Během syntaktické analýzy je již kostra tabulky připravená a je možné s ní rovnou pracovat. Za poznámku jistě stojí zmínka o tom, jak poznáme, zda byla již proměnná deklarována nebo ji jen skener načetl na pravé straně přiřazení. Tady spoléháme na prostý předpoklad, že deklarovaná proměnná má již u svého identifikátoru uvedeno, že se jedná o proměnnou (nikoliv funkci) a má přidělen typ.
     
@@ -319,10 +319,14 @@ Tato sekce se bude věnovat samotné práci na překladači. Způsob organizace 
     
     Kromě povinných kontrol máme implementovanou kontrolu dělení nulovým číselným literálem, která se vyhodnocuje již během překladu. Pokud je nula ukryta v proměnné, odhalí se to klasickým způsobem za běhu programu.
     
+    Nejen v sémantické analýze bylo potřeba mezi jednotlivými funkcemi či dokonce moduly předávat informace spojené s aktuálním stavem překladu a kontrol, k tomu jsme vytvořili strukturu \texttt{context\_t}, jejímž prostřednictvím jsme si následně předávali odkazy na potřebné instance ADT.
+    
     \subsection{Generátor cílového kódu}
     Generování kódu řešíme přímo během zpracování tokenů syntaktickými a sémantickými kontrolami. Sémantické akce tak rovnou volají funkce z generátoru, který vypisuje kód na standardní výstup. Rozhodli jsme se pro to poté, co se jeden člen týmu rozhodl snížit svou aktivitu na minimum, kdy jsme si uvědomili, že bychom komplikovanější postup nestihli zhotovit včas.
     
     Bohužel má tento způsob své nevýhody, a museli jsme podniknout několik ústupků. Veškeré funkce (včetně vestavěných) přeskakujeme nepodmíněnými skoky, aby se jejich kód neprováděl, kdy nemá. Nejsou totiž někde na začátku/konci výsledného souboru, ale rozmístěné všude po něm. K vyhodnocování výrazů využíváme převážně zásobníkové instrukce s využitím přirozeného postfixového zpracování syntaktické analýzy zdola nahoru. Deklarace proměnných v cyklech řešíme podobně jako funkce -- kód pro deklaraci všech proměnných objevujících se v cyklech je generován těsně přes koncem funkce, kam se skočí po zavolání funkce. Následně se zpracování vrací na začátek funkce a potřebné proměnné jsou již deklarovány. Na konci provádění funkce se blok s deklaracemi přeskakuje.
+    
+    Pro výraz přiřazení využíváme frontu identifikátorů \texttt{symqueue\_t}, do které si ukládáme proměnné tak jak jsou zpracovávány vlevo od operátoru přiřazení a následně po vyhodnocení výrazu či získání návratové hodnoty funkce na pravé straně se vyjme první proměnná z fronty a vygeneruje se dosazaní hodnoty získané výrazem nebo funkcí.
     
     \subsection{Tabulka symbolů}
     \label{sec:symtable}
@@ -345,42 +349,36 @@ V této kapitole bych z pozice vedoucího týmu rád popsal, jakým způsobem fu
 
 Na projektu měli pracovat všichni členové týmu. Projekt byl rozdělen na větší množství menších podproblémů s různou mírou složitosti. Rozdělení do úkolů, jejich správu a dohled nad jejich řešením měl na starost vedoucí týmu. O tom, jaký úkol bude kdo vypracovávat však nebylo explicitně rozhodováno, každý člen si mohl zvolit, na čem bude v danou chvíli pracovat. Byla snaha rozdělit úkoly do minimalistických celků, aby se každý člen týmu mohl podílet na řešení každé části vývoje kompilátoru, pokud by měl zájem. Jako příklad lze uvést fakt, že byl každý pomocný abstraktní datový typ vyčleněn do samostatného úkolu.
 
-Cílem bylo, aby měl každý člen alespoň základní povědomí o všech částech projektu. Kvůli tomu, že na jednom větším celku (např. lexikální analýza) pracovalo větší množství lidí, byla také podněcována jejich vzájemná komunikace, při níž bylo třeba domlouvat rozhraní mezi jednotlivými moduly. Nebyl tedy zvolen postup, kdy se rozdělí větší celky a poté se provádí jejich kompozice.
+Cílem bylo, aby měl každý člen alespoň základní povědomí o všech částech projektu. Kvůli tomu, že na jednom větším celku (např. lexikální analýza) pracovalo větší množství lidí, byla také podněcována jejich vzájemná komunikace, při níž bylo třeba domlouvat rozhraní mezi jednotlivými moduly. Nebyl tedy zvolen postup, kdy se mezi členy týmu rozdělí větší celky a poté se provádí jejich kompozice.
 
 \subsection{Využité nástroje a procesy}
 
-Kvůli jednoduší spolupráci na tvorbě projektu jsme se rozhodli využít verzovací systém Git se vzdáleným repozitářem hostovaným službou Github. Na této službě jsme kromě funkce vzdáleného repozitáře pro správu verzí projektu využili také několik dalších funkcí:
+Kvůli jednodušší spolupráci na tvorbě projektu jsme se rozhodli využít verzovací systém Git se vzdáleným repozitářem hostovaným službou Github. Na této službě jsme kromě funkce vzdáleného repozitáře pro správu verzí projektu využili také několik dalších funkcí:
 \begin{itemize}
     \item Github project boards\cite{gh-proj-boards} pro organizaci úkolů a jasný přehled o aktuálním stavu projektu,
-    \item Github issues\cite{gh-issues} a jako reprezentaci úkolů,
-    \item Github pull requests\cite{gh-pull-requests} pro jednoduší, přehlednější a interaktivnější revize kódu,
+    \item Github issues\cite{gh-issues} jako reprezentaci úkolů,
+    \item Github pull requests\cite{gh-pull-requests} pro jednodušší, přehlednější a interaktivnější revize kódu,
     \item Github Actions\cite{gh-actions} pro automatizaci úkolů, spouštění automatických testů a kontrol,
     \item Github API\cite{gh-api} pro účely skriptu pro výpočet bodového rozdělení.
 \end{itemize}
 
 Služba Github dále poskytuje různé možnosti omezení přístupu k větvím a určitým typům změn\cite{gh-protected-branches}. Díky tomu bylo možné uzamknout výchozí větev a pro veškeré změny vynucovat revize od jiného člena týmu. Autor změn tak vždy dostal zpětnou vazbu od někoho dalšího a podařilo se tak odhalit mnoho chyb, kterých si autor nevšiml. Začleňování změn do hlavní větve bylo prováděno výhradně pomocí webového rozhraní pro žádosti o začlenění změn (běžněji známo pod anglickým pojmem \uv{pull request}). Tam je možné změny komentovat a navrhovat různé úpravy a opravy chyb nalezených během revize.
 
-Samotné psaní kódu si pak členové týmu zařídili po svém podle toho, co komu vyhovovalo. K dispozici byla poměrně komplexní konfigurace nástroje Make\cite{make-official-docs}\cite{make-cheatsheet}, která poskytovala automatickou kompilaci a sestavování zdrojových kódů, jednotkových a manuálních testů, přípravu výsledného archivu pro odevzdání a další drobnosti. Pro jednotkové (\uv{unit}) testy využíváme minimalistický framework Unity\cite{unity}.
+Samotné psaní kódu si pak členové týmu zařídili po svém podle toho, co komu vyhovovalo. K dispozici byla poměrně komplexní konfigurace nástroje Make\cite{make-official-docs}\cite{make-cheatsheet}, která poskytovala automatickou kompilaci a sestavování zdrojových kódů, jednotkových a manuálních testů, přípravu výsledného archivu pro odevzdání a další drobnosti. Pro jednotkové (\uv{unit}) testy využíváme minimalistický framework Unity\cite{unity}. Aby byl odevzdaný Makefile jednoduchý a obsahoval pouze potřebná pravidla a správné cesty, při tvorbě výsledného archivu se aplikuje záplata (pomocí programu \texttt{patch}), která odebere vše nepodstatné.
 
 \subsection{Rozdělení úkolů}
 \label{sec:tasks-division}
 
-Jak bylo zmíněno v kapitole \ref{sec:way-to-work-on-project}, členové týmu si mohli sami volit, čemu se budou věnovat. Jelikož se některé větší úkoly dále špatně dělí, každý člen se nakonec některým částem vývoje kompilátoru věnoval více než jiným, a s trochou nadsázky by se dalo říct, že se na ně \uv{specializoval}. V následujících odstavcích bude rozvedeno rozdělení klíčových částí mezi členy projektu.
+Jak bylo zmíněno v kapitole \ref{sec:way-to-work-on-project}, členové týmu si mohli sami volit, čemu se budou věnovat. Jelikož se některé větší úkoly dále špatně dělí, každý člen se nakonec některým částem vývoje kompilátoru věnoval více než jiným, a s trochou nadsázky by se dalo říct, že se na ně \uv{specializoval}. Dále bude rozvedeno rozdělení klíčových částí mezi členy projektu.
 
-Lexikální analýze se primárně věnoval Michal Šmahel. Tato část byla však značně rozdělena i mezi další členy týmu, kteří spolupracovali na pomocných implementacích. Diagram lexikální analýzy (viz obrázek č. \ref{fig:fsm-diagram}) skládali všichni členové týmu na prezenční schůzce. Dále se vytvářely různé pomocné datové struktury, kterým se mimo Michala Šmahela věnoval i Martin Havlík a částečně také Pavel Osinek.
-
-Syntaktická a sémantická analýza byla rozdělena mezi Michala Šmahela a Martina Havlíka. Zpracování struktury zdrojových souborů pomocí metody shora dolů se ujal Martin Havlík, zpracování výrazů metodou zdola nahoru se poté zabýval Michal Šmahel. Ten však řešil pouze implementaci, precedenční tabulku skládal Martin Havlík. Sémantické kontroly a akce následně doplňoval každý do svého modulu sám.
-
-Generování kódu se věnoval opět Michal Šmahel s Martinem Havlíkem. Základní principy generování vymýšleli na týmových schůzkách, kam většinou Pavel Osinek z různých důvodů nedocházel. Implementaci hlavní části následně provedl Martin Havlík s drobnými zásahy (převážně optimalizace generovaného kódu) od Michala Šmahela. Ten kromě toho kompletně vypracoval generování kódu pro vestavěné funkce.
-
-Michal Šmahel se dále, coby vedoucí týmu, podílel na organizaci práce a dohledu na ostatní členy týmu. Rovněž se významně podílel a přípravě pracovního prostředí a testů. Pavel Osinek připravoval šablonu dokumentace a grafickou podobu diagramu stavového automatu.
+Na tvorbě diagramu konečného automatu pro lexikální analýzu (viz obrázek č. \ref{fig:fsm-diagram}) se podíleli všichni členové týmu. Dále mezi ně byly rozptýleny drobné datové struktury, ADT a pomocné hlavičkové soubory. Tvorbě skeneru se věnoval Michal Šmahel. Syntaktická analýza byla rozdělena mezi Martina Havlíka (shora dolů) a Michala Šmahela (zdola nahoru). Veškeré podklady pro obě z metod (LL gramatika, LL tabulka a precedenční tabulka) zhotovil Martin Havlík. Sémantické kontroly si implementoval každý do svého modulu pro syntaktickou analýzu. Generování kódu se věnovali Martin Havlík a Michal Šmahel. Dokumentaci tvořili převážně Martin Havlík a Michal Šmahel, Pavel osinek připravoval diagram konečného automatu. Michal Šmahel se dále, coby vedoucí týmu, podílel na organizaci práce a dohledu na ostatní členy týmu. Rovněž se významně podílel na přípravě pracovního prostředí a testů. Pavel Osinek připravoval šablonu dokumentace.
 
 Důvodem, proč tato kapitola nabývá nadměrné délky, je problém s jedním členem týmu, který se rozhodl projektu věnovat minimum času a úsilí, což bylo nutné dále řešit nerovnoměrným rozdělením bodů. Kvůli této záležitosti byl osloven i dr. Křivka, který povolil výrazné snížení bodů Pavlu Osinkovi, pokud bude dostatečně prokazatelné, kdo měl na čem jaký podíl. Dohodli jsme se na zavedení bodového systému k úkolům zmíněným v kapitole \ref{sec:way-to-work-on-project}, podle něhož se následně spočítala procenta a po drobné korekci v řádu malých jednotek procent prohlásila za finální rozdělení bodů. Doufám, že tato kapitola splnila svůj účel a dokreslila, jakým způsobem se jednotliví členové na projektu podíleli a výsledné bodové rozdělení je tím dostatečně odůvodněné. V případě problémů jsou je k dispozici historie úkolů a jejich bodování včetně automatického hodnotícího skriptu.
 
 \section{Závěr}
-Ačkoliv jsme se poslední dva týdny před odevzdáním projektu báli, abychom ve dvou vše stihli dokončit, nakonec se nám to podle našeho názoru podařilo poměrně uspokojivě. Víme sice o několika nedokonalostech, které projekt tíží, ale celkově jsme se svými výkony poměrně spokojení.
+Ačkoliv jsme se poslední dva týdny před odevzdáním projektu báli, abychom ve dvou vše stihli dokončit, nakonec se nám to podle našeho názoru podařilo poměrně uspokojivě. Víme sice o několika nedokonalostech, které projekt tíží, ale celkově jsme se svými výkony poměrně spokojeni.
 
-Projekt byl velmi zajímavý a jsme rádi, že jsme si mohli zkusit něco takového navrhnout a naprogramovat. Díky negativní zkušenosti máme také jisté ponaučení ohledně práce v týmu, což se nám jistě bude v životě hodit.
+Projekt byl velmi zajímavý a jsme rádi, že jsme si mohli zkusit něco takového navrhnout a naprogramovat. Odnášíme si také jisté ponaučení ohledně práce v týmu, což se nám jistě bude v životě hodit.
 
 \newpage
 
